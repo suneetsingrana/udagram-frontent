@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-frontent-app
+  labels:
+    app: udagram-frontent-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: udagram-frontent-app
+  template:
+    metadata:
+      labels:
+        app: udagram-frontent-app
+    spec:
+      containers:
+      - name: udagram-frontent
+        image: suneetsinghrana/udagram-frontent
+        ports:
+        - containerPort: 80
