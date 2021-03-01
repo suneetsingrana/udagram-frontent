@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-frontent-app
+  name: udagram-frontent-deploy
   labels:
     app: udagram-frontent-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: udagram-frontent-app
   template:
     metadata:
+      name: udagram-frontent-pod
       labels:
-        app: udagram-frontent-app
+        app: udagram-frontent-app # Pod label
     spec:
       containers:
       - name: udagram-frontent
-        image: suneetsinghrana/udagram-frontent
+        image: docker.io/suneetsinghrana/udagram-frontent:latest
         ports:
         - containerPort: 80

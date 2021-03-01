@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: udagram-frontent-app
+  name: udagram-frontent-svc
   labels:
-    run: udagram-frontent-app
+    app: udagram-frontent-app
 spec:
+  type: NodePort # Default is ClusterIP if not specified
+  selector:
+    app: udagram-frontent-app # match the Pod label
   ports:
   - port: 80
+    #targetPort: 80 # targetPort is optional if same as port number
     protocol: TCP
-  selector:
-    run: udagram-frontent-app
